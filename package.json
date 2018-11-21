@@ -1,0 +1,38 @@
+{
+  "name": "lets-react",
+  "version": "1.0.0",
+  "description": "A wee React boilerplate to get started on something",
+  "main": "index.html",
+  "author": "Paul Stewart",
+  "license": "ISC",
+  "scripts": {
+    "exercise1": "parcel exercises/1/index.html --open",
+    "exercise2": "parcel exercises/2/index.html --open",
+    "exercise3": "parcel exercises/3/index.html --open",
+    "exercise4": "parcel exercises/4/index.html --open",
+    "exercise4-final": "parcel exercises/4-final/index.html --open",
+    "exercise99": "parcel exercises/99/index.html --open"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "parcel-bundler": "^1.10.3",
+    "react": "16.6.3",
+    "react-dom": "16.6.3",
+    "react-redux": "^5.1.1",
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "sass": "^1.15.1"
+  },
+  "keywords": [
+    "react",
+    "boilerplate",
+    "template"
+  ]
+}

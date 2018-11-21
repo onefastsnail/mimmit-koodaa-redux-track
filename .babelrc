@@ -1,0 +1,4 @@
+{
+  "presets": [["env"], "stage-2", "latest", "react"],
+  "plugins": ["syntax-dynamic-import", "transform-class-properties"]
+}
