@@ -2,7 +2,7 @@
 
 In this exercise we will create a React Redux application which will query an API to get related suggestions on related movies, music, books and games.
 
-[A final demo]() can be found here.
+[A final demo](https://mimmit-koodaa-redux-track.now.sh) can be found here.
 
 ## Goals
 
@@ -173,6 +173,10 @@ Now we want to pass the store `results` value to our `Results` component to rend
 ```
 
 Awesome! We should now see results!
+
+## Need some help?
+
+The final result can be found in [exercises/4-final](exercises/4-final)
 
 ## Further development ideas
 

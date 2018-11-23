@@ -11,6 +11,6 @@ export default class extends Component {
   }
 
   render() {
-    return <div />;
+    return <div>{/* Add image here */}</div>;
   }
 }

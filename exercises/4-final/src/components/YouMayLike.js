@@ -45,14 +45,7 @@ class YouMayLike extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            value={this.props.query}
-            onChange={this.handleQueryChange}
-            placeholder={`I like...`}
-            required
-            autoFocus
-          />
+          Find
           <select
             onChange={this.handleCategoryChange}
             value={this.props.selectedCategory}
@@ -63,7 +56,16 @@ class YouMayLike extends Component {
               </option>
             ))}
           </select>
-          <button type="submit">Find more</button>
+          that are similar to
+          <input
+            type="text"
+            value={this.props.query}
+            onChange={this.handleQueryChange}
+            placeholder={`... Harry Potter`}
+            required
+            autoFocus
+          />
+          <button type="submit">Go!</button>
         </form>
 
         <div className="l-grid">

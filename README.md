@@ -42,6 +42,6 @@ We have created a series of exercises to help take you on the journey of underst
 We have one and only one rule... You must write the code you see, not copy :p. This will help you get more familiar with the code you are using.
 
 1. [Implementing a stateful component](exercises/1/README.md)
-1. [Passing state down as props](exercises/2/README.md)
+1. ~~[Passing state down as props](exercises/2/README.md)~~
 1. [Redux introduction](exercises/3/README.md)
 1. [Bringing Redux to React](exercises/4/README.md)

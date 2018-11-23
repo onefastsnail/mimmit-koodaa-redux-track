@@ -15,21 +15,22 @@ body {
 
 form {
   input {
-    width: calc(50% - 2em);
+    width: calc(30% - 2em);
     padding: 1em;
     font-size: 1em;
     margin-bottom: 1em;
-    border: 1px solid $base-color;
-    margin-right: 1em;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid $base-color;
+    margin: 0 1em;
 
     &:focus {
       outline: none !important;
-      box-shadow: 0 0 10px $base-color;
     }
   }
 
   select {
-    margin-right: 1em;
+    margin: 0 1em;
   }
 }
 
@@ -126,12 +127,10 @@ form {
 
 pre {
   background: #f4f4f4;
-  border: 1px solid #ddd;
   border-left: 3px solid $base-color;
   color: #666;
   page-break-inside: avoid;
   font-family: monospace;
-  font-size: 15px;
   line-height: 1.6;
   margin-bottom: 1.6em;
   max-width: 100%;

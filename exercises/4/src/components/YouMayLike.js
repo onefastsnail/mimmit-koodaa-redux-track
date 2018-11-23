@@ -38,15 +38,18 @@ class YouMayLike extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
+          Find
+          {/*Select dropdown here*/}
+          that are similar to
           <input
             type="text"
             value={this.props.query}
             onChange={this.handleQueryChange}
-            placeholder={`I like...`}
+            placeholder={`... Harry Potter`}
             required
             autoFocus
           />
-          <button type="submit">Find more</button>
+          <button type="submit">Go!</button>
         </form>
 
         <div className="l-grid">
