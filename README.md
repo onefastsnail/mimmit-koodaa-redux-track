@@ -4,11 +4,11 @@ We will try to go some exercises to help understand state within [React](https:/
 
 ## The Goals
 
-* To understand state
-* To understand state within React
-* To understand Redux on its own
-* Sharing state across React components and understanding the need for something like Redux
-* Functional components that rely on props as a data source
+- To understand state
+- To understand state within React
+- To understand Redux on its own
+- Sharing state across React components and understanding the need for something like Redux
+- Functional components that rely on props as a data source
 
 ## Getting started
 
@@ -21,7 +21,7 @@ In essence, state can be defined as a particular condition that something is in 
 
 ## State with React
 
-State is hugely important in React. In the context of React, state can refer to current condition of a component or even an entire application, which we will see later. Any changes to a components state or props will trigger a re render as your component needs to "React" to the new data. 
+State is hugely important in React. In the context of React, state can refer to current condition of a component or even an entire application, which we will see later. Any changes to a components state or props will trigger a re render as your component needs to "React" to the new data.
 
 State can be anything, but it could be easier to think of things like storing the current state of if a modal is open or an array of blog posts.
 
@@ -37,7 +37,11 @@ Finally we get to Redux! It is maybe good to mention that Redux is not a library
 
 We have created a series of exercises to help take you on the journey of understanding state in React and its different forms.
 
+### Rules
+
+We have one and only one rule... You must write the code you see, not copy :p. This will help you get more familiar with the code you are using.
+
 1. [Implementing a stateful component](exercises/1/README.md)
 1. [Passing state down as props](exercises/2/README.md)
-1. [Redux introduction](exercises/3/README.md) 
+1. [Redux introduction](exercises/3/README.md)
 1. [Bringing Redux to React](exercises/4/README.md)

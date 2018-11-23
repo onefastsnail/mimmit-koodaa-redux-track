@@ -1,11 +1,12 @@
 {
-  "name": "lets-react",
+  "name": "mimmit-koodaa-redux-track",
   "version": "1.0.0",
-  "description": "A wee React boilerplate to get started on something",
+  "description": "Lets learn React and Redux",
   "main": "index.html",
   "author": "Paul Stewart",
   "license": "ISC",
   "scripts": {
+    "start": "parcel exercises/4-final/index.html --open",
     "exercise1": "parcel exercises/1/index.html --open",
     "exercise2": "parcel exercises/2/index.html --open",
     "exercise3": "parcel exercises/3/index.html --open",
