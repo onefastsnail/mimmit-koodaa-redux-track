@@ -2,7 +2,7 @@
   Our action types
   We use these in action creators and the reducer to match the actions trying to change state
 */
-export const FETCH_POSTS = "FETCH_POSTS";
+export const SET_POSTS = "SET_POSTS";
 export const SEARCH_POSTS = "SEARCH_POSTS";
 
 /*
@@ -11,7 +11,7 @@ export const SEARCH_POSTS = "SEARCH_POSTS";
     We dispatch this when wanting to make changes to our store
 */
 export const fetchPosts = posts => {
-  return { type: FETCH_POSTS, posts };
+  return { type: SET_POSTS, posts };
 };
 
 export const searchPosts = query => {
@@ -33,7 +33,7 @@ const intialState = {
 */
 export default (state = intialState, action) => {
   switch (action.type) {
-    case FETCH_POSTS: {
+    case SET_POSTS: {
       return { ...state, posts: action.posts };
     }
     case SEARCH_POSTS: {

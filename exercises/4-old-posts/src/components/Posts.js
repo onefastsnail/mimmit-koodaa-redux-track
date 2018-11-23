@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchPosts, searchPosts } from "../branches/posts";
+import { setPosts, searchPosts } from "../storeBranches/posts";
 import Post from "./Post";
 
 class Posts extends Component {
@@ -12,7 +12,7 @@ class Posts extends Component {
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then(response => response.json())
       .then(repsonse => {
-        this.props.dispatch(fetchPosts(repsonse));
+        this.props.dispatch(setPosts(repsonse));
       });
   }
 
@@ -21,16 +21,11 @@ class Posts extends Component {
   };
 
   filterPosts = () => {
-    const byTitle = post =>
+    const byQuery = post =>
+      post.title &&
       post.title.toLowerCase().indexOf(this.props.query.toLowerCase()) > -1;
-
-    const byBody = post =>
-      post.body.toLowerCase().indexOf(this.props.query.toLowerCase()) > -1;
-
-    return this.props.posts.reduce((posts, post) => {
-      if (byTitle(post) || byBody(post)) posts.push(post);
-      return posts;
-    }, []);
+    const posts = [...this.props.posts.filter(byQuery)];
+    return posts;
   };
 
   render() {
@@ -57,11 +52,7 @@ class Posts extends Component {
 // Map all the store state to props of the component
 const mapStateToProps = state => state;
 
-const mapDispatchToProps = dispatch => {
-  return {
-    dispatch
-  };
-};
+const mapDispatchToProps = dispatch => ({ dispatch });
 
 /*
   Connect our component to state using a higher order component

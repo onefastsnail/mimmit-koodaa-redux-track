@@ -9,11 +9,7 @@
 
 `npm run exercise4`
 
-## Tasks
+## Task ideas
 
-1. 
-
-## Further development ideas
-
-* Make a save list of results you like
-* 
+* Store an array of Giphys, components that share array
+* API fetch of items, store in the store, implement live search?
