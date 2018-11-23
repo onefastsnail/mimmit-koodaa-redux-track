@@ -13,6 +13,8 @@ Lets implement a component that renders an image from the state url property.
 1. `npm install`
 2. `npm run exercise1`
 
+Or want to work from [Codesandbox](https://codesandbox.io/s/8kxkj5987l) 😈?
+
 ## Tasks
 
 ### 1. Set state when the component mounts
@@ -21,7 +23,7 @@ When the component mounts into the DOM, let update the component state with a UR
 
 Here we would want to make use of the [`componentDidMount`](https://reactjs.org/docs/react-component.html#componentdidmount) component life cycle method. This method is called when a component is mounted into the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction).
 
-So lets add the following class method:
+So lets add the following class method to our [`src/components/Giphy.js`](src/components/Giphy.js) component.
 
 ```javascript
 componentDidMount() {

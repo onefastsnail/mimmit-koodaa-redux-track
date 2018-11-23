@@ -12,6 +12,8 @@ This is a simple implementation of [Redux](https://redux.js.org/). The goal here
 
 `npm run exercise3`
 
+Or want to work from [Codesandbox](https://codesandbox.io/s/yvjqzk85pj) 😈?
+
 ## Tasks
 
 **Coach** Explain the Redux concepts
@@ -27,7 +29,7 @@ This is a simple implementation of [Redux](https://redux.js.org/). The goal here
 
 ## Too easy?
 
-1. Create a new action, action creator, and reducer case to store the current time
+1. Create a new action, action creator, and reducer case to show the current time
 
 - Using an `setInterval` to `dispatch` an action with the current timestamp, maybe `Date.now()`?
 

@@ -11,8 +11,8 @@ const SET_GIPHY_URL = "SET_GIPHY_URL";
     Just a function that return plain JavaScript object
     We dispatch this when wanting to make changes to our store
 */
-const setGiphyUrl = value => {
-  return { type: SET_GIPHY_URL, value };
+const setGiphyUrl = url => {
+  return { type: SET_GIPHY_URL, url };
 };
 
 /*
@@ -23,7 +23,7 @@ const setGiphyUrl = value => {
 const reducer = (state, action) => {
   switch (action.type) {
     case SET_GIPHY_URL: {
-      return { ...state, url: action.value };
+      return { ...state, url: action.url };
     }
     default:
       return state;
@@ -57,4 +57,18 @@ button.addEventListener("click", () => {
   store.dispatch(
     setGiphyUrl("https://media.giphy.com/media/gU25raLP4pUu4/giphy.gif")
   );
+
+  /* 
+    The above is the same as:
+
+    const action = setGiphyUrl("https://media.giphy.com/media/gU25raLP4pUu4/giphy.gif");
+    store.dispatch(action);
+
+    or 
+    
+    store.dispatch({ type: SET_GIPHY_URL, url: "https://media.giphy.com/media/gU25raLP4pUu4/giphy.gif" });
+
+    We use an action creator instead.
+
+    */
 });

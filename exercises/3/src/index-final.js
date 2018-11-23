@@ -6,18 +6,23 @@ import { createStore } from "redux";
 */
 const SET_GIPHY_URL = "SET_GIPHY_URL";
 const MOUSE_CLICK = "MOUSE_CLICK";
+const CLOCK_TICK = "CLOCK_TICK";
 
 /*
     Our action creator
     Just a function that return plain JavaScript object
     We dispatch this when wanting to make changes to our store
 */
-const setGiphyUrl = value => {
-  return { type: SET_GIPHY_URL, value };
+const setGiphyUrl = url => {
+  return { type: SET_GIPHY_URL, url };
 };
 
-const mouseClick = value => {
-  return { type: MOUSE_CLICK, value };
+const mouseClick = coordinates => {
+  return { type: MOUSE_CLICK, coordinates };
+};
+
+const clockTick = time => {
+  return { type: CLOCK_TICK, time };
 };
 
 /*
@@ -28,10 +33,13 @@ const mouseClick = value => {
 const reducer = (state, action) => {
   switch (action.type) {
     case SET_GIPHY_URL: {
-      return { ...state, url: action.value };
+      return { ...state, url: action.url };
     }
     case MOUSE_CLICK: {
-      return { ...state, clickCoordinates: action.value };
+      return { ...state, clickCoordinates: action.coordinates };
+    }
+    case CLOCK_TICK: {
+      return { ...state, time: action.time };
     }
     default:
       return state;
@@ -51,10 +59,14 @@ const store = createStore(reducer);
   We extract the url from the store state and set the body background image property
 */
 store.subscribe(() => {
-  const { url, clickCoordinates } = store.getState();
+  const { url, clickCoordinates, time } = store.getState();
+
   document.body.style.backgroundImage = `url(${url})`;
+
   document.querySelector(".coordinates").innerHTML =
     clickCoordinates && clickCoordinates.join(", ");
+
+  document.querySelector(".time").innerHTML = time;
 });
 
 /*
@@ -74,3 +86,7 @@ button.addEventListener("click", () => {
 window.addEventListener("click", event => {
   store.dispatch(mouseClick([event.pageX, event.pageY]));
 });
+
+setInterval(() => {
+  store.dispatch(clockTick(new Date().toTimeString()));
+}, 500);

@@ -14,11 +14,13 @@ In this exercise we will create a React Redux application to help a user find re
 
 `npm run exercise4`
 
+Or want to work from [Codesandbox](https://codesandbox.io/s/jv5qy0r9k5) 😈?
+
 ## Tasks
 
-### 1. Connect our application to state
+### 1. Connect our application to the Redux store
 
-In `src/index.js` we create an instance of our store on `line 9`, just like what we did from [exercise 3](exercises/3/README.md). But now in React land we have to somehow connect our the store to our React application. There is a useful library [React Redux](https://github.com/reduxjs/react-redux) that gives us official React bindings for Redux which will help us connect our store.
+Lets start in [`src/index.js`](src/index.js) where we create an instance of our store on `line 9`, just like what we did from [exercise 3](exercises/3/README.md). But now in React land we have to somehow connect our the store to our React application. There is a useful library [React Redux](https://github.com/reduxjs/react-redux) that gives us official React bindings for Redux which will help us connect our store.
 
 We start by replacing the `React.Fragment` component in [exercises/4/src/index.js](exercises/4/src/index.js) with a `Provider` component found in the React Redux library. This `Provider` component makes the Redux store available to its child components.
 
@@ -33,6 +35,8 @@ We also pass which store to use as a prop to the provider. And our application c
 ### 2. Connect our component to the Redux store
 
 Now that we have "provided" our Redux store to our application, we now need connect some components to it. It is good to note that not all our components need to connect to our store.
+
+So lets move into our component [`src/components/YouMayLike.js`](src/components/YouMayLike.js)
 
 **Coach** Explain presentational vs container components.
 
@@ -77,7 +81,7 @@ Great so now we should have our application and component connected to state! An
 
 In this task we will create and store our categories in our Redux store.
 
-First we add some initial state to our branch of state in [src/storeBranches/youMayLike.js](src/storeBranches/youMayLike.js) line 33. Here w have an array of categories that we will use to populate our dropdown. Then we have also added a property to store the current selected category.
+First we add some initial state to our branch of state in [`src/storeBranches/youMayLike.js`](src/storeBranches/youMayLike.js) line 33. Here we have an array of categories that we will use to populate our dropdown. Then we have also added a property to store the current selected category.
 
 **Coach** Explain state tree branches
 
@@ -159,7 +163,7 @@ this.props.dispatch(setCategory(event.target.value));
 
 Great, we now have results but we can't see them! We have created `Loading` and `Results` components for you to help.
 
-First we need import our components.
+So within [src/components/YouMayLike.js](src/components/YouMayLike.js), we need to first import our new components.
 
 ```javascript
 import Loading from "./Loading";
