@@ -1,6 +1,6 @@
 # Exercise 4
 
-In this exercise we will create a React Redux application which will query an API to get related suggestions on related movies, music, books and games.
+In this exercise we will create a React Redux application to help a user find related suggestions for movies, music, books and games.
 
 [A final demo](https://mimmit-koodaa-redux-track.now.sh) can be found here.
 
@@ -8,7 +8,7 @@ In this exercise we will create a React Redux application which will query an AP
 
 - To learn how to connect Redux with React
 - To apply the concepts of Redux to React components
-- Learn about functional components
+- An introduction to functional components
 
 ## Usage
 
@@ -18,11 +18,11 @@ In this exercise we will create a React Redux application which will query an AP
 
 ### 1. Connect our application to state
 
-In `src/index.js` we create an instance of our store on line 9, just like what we did from [exercise 3](exercises/3/README.md). But now in React land we have to somehow connect our the store to our React application. There is a useful library [React Redux](https://github.com/reduxjs/react-redux) that gives us official React bindings for Redux which will help us connect our store.
+In `src/index.js` we create an instance of our store on `line 9`, just like what we did from [exercise 3](exercises/3/README.md). But now in React land we have to somehow connect our the store to our React application. There is a useful library [React Redux](https://github.com/reduxjs/react-redux) that gives us official React bindings for Redux which will help us connect our store.
 
-We start by replacing our `React.Fragment` component with a `Provider` component found in the React Redux library. This `Provider` component makes the Redux store available to our components that have been called using the `connect()`. We will touch on this function shortly.
+We start by replacing the `React.Fragment` component in [exercises/4/src/index.js](exercises/4/src/index.js) with a `Provider` component found in the React Redux library. This `Provider` component makes the Redux store available to its child components.
 
-We also pass the store as a prop to the provider so itself can subscribe to the store changes and act accordingly.
+We also pass which store to use as a prop to the provider. And our application component is a child component within. This means any child component within our `YouMayLike` component tree can now connect to that store.
 
 ```javascript
 <Provider store={store}>
@@ -32,15 +32,15 @@ We also pass the store as a prop to the provider so itself can subscribe to the 
 
 ### 2. Connect our component to the Redux store
 
-Now that we have provided the Redux store to our application, we can now connect our components to it. It is maybe good to note that not all our components need to connect to our store.
+Now that we have "provided" our Redux store to our application, we now need connect some components to it. It is good to note that not all our components need to connect to our store.
 
 **Coach** Explain presentational vs container components.
 
-To connect our components to our store we use the [`connect()`](https://github.com/reduxjs/react-redux/blob/master/docs/api.md#connect). Connect is a higher order component which simply means it is a function that takes a component and returns a new component. So in this case the new component returned will have the Redux state passed to it via props.
+To connect a component to our store we use the [`connect()`](https://github.com/reduxjs/react-redux/blob/master/docs/api.md#connect). `Connect()` is a higher order component which simply means it is a function that takes a component and returns a new component. So in this case the new component returned will have the Redux state passed to it via props, awesome!.
 
 So we now want to replace our `export default YouMayLike;` line with the `connect()` approach.
 
-First we need to import this function.
+First we need to import this function from the React Redux library.
 
 ```javascript
 import { connect } from "react-redux";
@@ -57,7 +57,7 @@ export default connect(
 
 At this point you may be wondering what the hell `mapStateToProps` and `mapDispatchToProps` are!? Both are functions that need to return an object, whose keys will then be passed on as the props of the component they are connected to.
 
-So below we map our entire Redux state to our component, meaning all store properties will be available on our components props.
+So below we map our entire Redux state to our component, meaning all store properties will be available through our component props. Lets add these 2 lines above our `connect()` call.
 
 ```javascript
 const mapStateToProps = state => state;
@@ -65,7 +65,7 @@ const mapStateToProps = state => state;
 
 **Coach** Explain arrow functions
 
-Remember the `dispatch()` used in [exercises/3/README.md](exercise 3), React Redux allows us to map this function to our components props, allowing our component to dispatch actions to our store.
+Remember the `dispatch()` used in [exercises/3/README.md](exercise 3), React Redux allows us to map this function to our component props, allowing our component to then dispatch actions to our store.
 
 ```javascript
 const mapDispatchToProps = dispatch => ({ dispatch });
@@ -77,12 +77,12 @@ Great so now we should have our application and component connected to state! An
 
 In this task we will create and store our categories in our Redux store.
 
-First we add some initial state to our branch of state in `src/storeBranches/youMayLike.js`. We have an array of categories to populate our dropdown. We have also added a property to store the current selected category.
+First we add some initial state to our branch of state in [src/storeBranches/youMayLike.js](src/storeBranches/youMayLike.js) line 33. Here w have an array of categories that we will use to populate our dropdown. Then we have also added a property to store the current selected category.
 
-**Coach** Explain state branches
+**Coach** Explain state tree branches
 
 ```javascript
-  categories: ["music", "movies", "books", "games"],
+  categories: ["anything", "music", "movies", "books", "games"],
   selectedCategory: "movies",
 ```
 
@@ -92,7 +92,9 @@ Then we create an action type for our action creator and reducer to use.
 export const SET_CATEGORY = "SET_CATEGORY";
 ```
 
-Up next is to create an action creator. Action creators are exactly that, functions that create actions. Actions are payloads of information that send data from your application to our store. This makes them portable and easy to test. We send them to the store using `dispatch()`.
+**Coach** Explain why we use action types
+
+Up next is to create an action creator. Action creators are exactly that, functions that create actions. Actions are payloads of information that send data from your application to our store. This approach makes them portable and easy to test. We send them to the store using `dispatch()`.
 
 So first lets create our action creator.
 
@@ -112,7 +114,9 @@ case SET_CATEGORY: {
     }
 ```
 
-Ok, so we now have our Redux store with initial values and actions to manage our categories. Up next is to add our select dropdown to our `src/components/YouMayLike.js` render output.
+Ok, so we now have our Redux store with initial category values and actions to manage our categories. Up next is to add our select dropdown to our [src/components/YouMayLike.js](src/components/YouMayLike.js) `render()`.
+
+**Coach** Explain whats going on here
 
 ```javascript
 <select
@@ -129,13 +133,15 @@ Ok, so we now have our Redux store with initial values and actions to manage our
 
 Now that we have our select dropdown, we need to implement our on change event handlers like in [exercise 1](exercises/1/README.md).
 
+So lets create a class method for this in [src/components/YouMayLike.js](src/components/YouMayLike.js).
+
 ```javascript
 handleCategoryChange = event => {
   // Dispatch an action to our store
 };
 ```
 
-We want our event handler to do something, so within this method we want to dispatch an action to our store with the category selected by the user. Remember how our `mapDispatchToProps` function would help us provide the `dispatch()` to our components props, well here we want to call it and pass it our action creator with the selected category from the dropdown.
+We now want our event handler to do something when called upon, so within this method we want to dispatch an action to our store with the category selected by the user. Remember how our `mapDispatchToProps` function would help us provide the `dispatch()` to our component props, well here we want to call it and pass it our action creator with the selected category from the dropdown.
 
 **Coach** Explain the event object
 
@@ -143,15 +149,17 @@ We want our event handler to do something, so within this method we want to disp
 this.props.dispatch(setCategory(event.target.value));
 ```
 
-**Coach** Explain the `handleSubmit` method, and dispatching `fetchRequest` first then `receivedRequest` with the response.
+**Coach** Explain the `handleSubmit` method, and dispatching `fetchRequest` first to show the loading component whilst fetching then `receivedRequest` with the response.
+
+** @TODO: Explain more the `handleSubmit` code **
 
 ### 4. Display the results with a loading component
 
 ** @TODO: This could be broken down more ie the results component **
 
-Great, we now have results but we cant see them! We have created `Loading` and `Results` components to help.
+Great, we now have results but we can't see them! We have created `Loading` and `Results` components for you to help.
 
-First we import our components.
+First we need import our components.
 
 ```javascript
 import Loading from "./Loading";
@@ -160,7 +168,7 @@ import Results from "./Results";
 
 We only want to show the `Loading` component if our store says we are fetching.
 
-**Coach** Recap the promise chain in the `handleSubmit` dispatching multiple actions
+**Coach** Explain the order of dispatching actions to show the `Loading` component
 
 ```
 {this.props.isFetching && <Loading />}
@@ -180,9 +188,9 @@ The final result can be found in [exercises/4-final](exercises/4-final)
 
 ## Further development ideas
 
-Hungry for more?
+Hungry for more? 😈
 
 - Paginate your results
-- Make a "save for later" list of results you like
-- Save state to local storage to allow page refreshes
+- Make a "save for later" list in the store of results you like
+- Save store state to local storage to allow page refreshes
 - Create another branch in the state tree

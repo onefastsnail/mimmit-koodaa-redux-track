@@ -6,7 +6,7 @@
   "author": "Paul Stewart",
   "license": "ISC",
   "scripts": {
-    "start": "parcel exercises/4-final/index.html --open",
+    "now-build": "parcel build exercises/4-final/index.html",
     "exercise1": "parcel exercises/1/index.html --open",
     "exercise2": "parcel exercises/2/index.html --open",
     "exercise3": "parcel exercises/3/index.html --open",

@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "alias": "mimmit-koodaa-redux-track.now.sh",
+  "builds": [
+    { "src": "package.json", "use": "@now/static-build" }
+  ]
+}

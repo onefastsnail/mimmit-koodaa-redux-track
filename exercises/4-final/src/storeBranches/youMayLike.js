@@ -35,7 +35,7 @@ export const receivedRequest = data => ({
 */
 const intialState = {
   query: "",
-  categories: ["music", "movies", "books", "games"],
+  categories: ["anything", "music", "movies", "books", "games"],
   selectedCategory: "movies",
   isFetching: false,
   results: []

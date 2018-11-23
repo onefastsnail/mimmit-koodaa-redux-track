@@ -6,6 +6,7 @@ This is a simple implementation of [Redux](https://redux.js.org/). The goal here
 
 - To get an understanding of Redux on its own
 - To understand dispatching actions, reducing data, and subscribing to a store
+- To change data, we need to dispatch an action
 
 ## Usage
 
